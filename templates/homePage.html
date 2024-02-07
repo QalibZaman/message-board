@@ -1,6 +1,21 @@
+
+    {% if user.is_authenticated %}
+
+        {{ user.username }}
+
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}"> Log in</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
+
+
+    {% endif %}
 <ul>
     {% for post in posts %}
-   
     <li> <h1>{{ post }}</h1> </li>
     {% endfor %}
+
 </ul>
